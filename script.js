@@ -1,4 +1,5 @@
 function determineVictor(userChoice, comChoice){
+    console.log(win, lose)
     var result = []
     //From here on 1:Rock, 2:Lizard, 3:Alien, 4:Scissors, 5: Paper
     if (userChoice === comChoice){
@@ -99,26 +100,32 @@ function determineVictor(userChoice, comChoice){
 }
 
 function gameOn(choice){
-    gameOverCheck(win, lose);
-    let comPlay = rdmDigit(1,5);
-    let gameRound = determineVictor(choice, comPlay);
+    console.log("but are we getting here?")
+    var comPlay = rdmDigit(1,5);
+    var gameRound = determineVictor(choice, comPlay);
 
     if (gameRound[0] == "win"){
         win++;
         viewScreenChango(gameRound[1]);
+        console.log("are we getting here? ln110");
     }
     else if (gameRound[0] == "lose"){
         lose++;
         viewScreenChango(gameRound[1]);
+        console.log("are we getting here? ln115")
     }
-    else {
+    else if (gameRound[0] == "draw") {
         viewScreenChango(1);
+        console.log("are we getting here? ln119")
     }
         updateText(gameRound[1]);
+        console.log("are we getting here? ln122")
 }
 
 function gameOverCheck(w, l){
-    if (w == 2 || l == 2){
+    console.log("we getting here?ln126")
+    var actionsClss = document.getElementsByClassName("actions");
+    if (w === 2 || l === 2){
         gameOver = true;
         if (w > l){
             viewScreenChango("WinScreen");
@@ -127,8 +134,18 @@ function gameOverCheck(w, l){
             viewScreenChango("LoseScreen");
         }
         updateText();
-        document.getElementsByClassName("actions").class = "gOver";
+        actionsClss.class = "gOver";
     }
+    return;
+}
+
+function powerOff(){
+    uRock.onclick = "";
+    uSnake.onclick = "";
+    uAlien.onclick = "";
+    uScissors.onclick = "";
+    uPaper.onclick = "";
+    console.log("are we getting here? ln210")
 }
 
 function rdmDigit(min, max){
@@ -138,15 +155,7 @@ function rdmDigit(min, max){
 function updateText(lotNum) {
     var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
     var dict2Index = 0
-    if (win == 1 && lose == 0){
-        dict2Index = 1;
-    }
-    else if (lose == 1 && win == 0){
-        dict2Index = 2;
-    }
-    else if (win == 1 && lose == 1){
-        dict2Index = 3;
-    }
+
     var gameDict1 = {
         1: "A tie!",
         2: "Rock crushes lizard!",
@@ -167,29 +176,46 @@ function updateText(lotNum) {
         2: "You're at disadvantage!",
         3: "Sudden death! What a nail biter!",
         4: "Click Home to reload or MyProfile to go back",
+    }       
+
+    if (win > lose){
+        dict2Index = 1;
+        console.log("are we getting here? ln149")
+    }
+    else if (lose > win){
+        dict2Index = 2;
+        console.log("are we getting here? ln153")
+    }
+    else if (win === lose){
+        dict2Index = 3;
+        console.log("are we getting here? ln157")
     }
 
     if (gameOver == true){
         lotNum = 12, gameDict2 = 4;
     }
+    console.log(gameDict1.lotNum);
     ln1.innerHTML = gameDict1.lotNum;
+    console.log(gameDict2.dict2Index);
     ln2.innerHTML = gameDict2.dict2Index;
 }
 
 function viewScreenChango(frame){
-    document.getElementById("videoPane").src = "./img/" + frame + ".png"
+    var vPane = document.getElementById("viewPic");
+    vPane.src = "./img/" + frame + ".png";
+    console.log("are we getting here? videoPane")
+    console.log(frame)
+    console.log("./img/" + frame + ".png")
 }
 
+var uRock = document.getElementById("userRock");
+var uSnake = document.getElementById("userSnake");
+var uAlien = document.getElementById("userAlien");
+var uScissors = document.getElementById("userScissors");
+var uPaper = document.getElementById("userPaper");
 var win = 0;
 var lose = 0;
 var gameOver = false;
 
-gameOverCheck();
+setInterval(gameOverCheck(), 5000, win, lose);
 
-if (gameOver === false){
-    document.getElementById("userRock").onclick = gameOn(1);
-    document.getElementById("userSnake").onclick = gameOn(2);
-    document.getElementById("userAlien").onclick = gameOn(3);
-    document.getElementById("userScissors").onclick = gameOn(4);
-    document.getElementById("userPaper").onclick = gameOn(5);
-}
