@@ -24,6 +24,10 @@ body {
     padding-top: 20px;
 }
 
+.gOver {
+    width: 1px;
+}
+
 .infoPane {
     padding: 20px 0px;
     text-align: center;

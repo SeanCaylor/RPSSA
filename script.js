@@ -1,5 +1,3 @@
-var win = 0, lose = 0, gameOver = false;
-
 function determineVictor(userChoice, comChoice){
     var result = []
     //From here on 1:Rock, 2:Lizard, 3:Alien, 4:Scissors, 5: Paper
@@ -125,11 +123,11 @@ function gameOverCheck(w, l){
         if (w > l){
             viewScreenChango("WinScreen");
         }
-        else {
+        else if (w < l){
             viewScreenChango("LoseScreen");
         }
         updateText();
-        document.getElementsByClassName("actions").removeAttribute("onclick");
+        document.getElementsByClassName("actions").class = "gOver";
     }
 }
 
@@ -180,4 +178,18 @@ function updateText(lotNum) {
 
 function viewScreenChango(frame){
     document.getElementById("videoPane").src = "./img/" + frame + ".png"
+}
+
+var win = 0;
+var lose = 0;
+var gameOver = false;
+
+gameOverCheck();
+
+if (gameOver === false){
+    document.getElementById("userRock").onclick = gameOn(1);
+    document.getElementById("userSnake").onclick = gameOn(2);
+    document.getElementById("userAlien").onclick = gameOn(3);
+    document.getElementById("userScissors").onclick = gameOn(4);
+    document.getElementById("userPaper").onclick = gameOn(5);
 }
