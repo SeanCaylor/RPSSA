@@ -1,0 +1,107 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding-top: 100px;
+    background-color: #888887;
+}
+
+.actions {
+    width: 125px;
+    border: double 5px #4e4e4d;
+    border-radius: 50%;
+}
+
+.actions:hover {
+    border: solid 5px #313131
+}
+
+.actionPane {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.infoPane {
+    padding: 20px 0px;
+    text-align: center;
+}
+
+.navBar {
+    background-color: #2B2B2B;
+    color: #A2A2A2;
+    display: flex;
+    font-weight: bold;
+    padding: 20px 15px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.navBtn {
+    flex: 1;
+    margin-right: 15px;
+    background-color: #2B2B2B;
+    border: solid rgb(37, 37, 37);
+    color: #A2A2A2;
+    box-shadow: 1px 1px black;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navBtn:hover {
+background-color: #6b1111;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #A2A2A2;
+    flex: 1;
+    font-family: 'Roboto', sans-serif; 
+}
+
+.navLink:hover{
+    color: #FFFFFF;
+}
+
+.navLinkCont {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+    width: 0%;
+    flex: 1;
+}
+
+.navTitle {
+    font-weight: bolder;
+    color: #6e0505;
+    flex: 1;
+    margin-left: 50px;
+    font-family: 'Goudy Bookletter 1911', serif;
+
+}
+
+.text {
+    font-family: 'Goudy Bookletter 1911', serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.videoPane {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.viewScreen {
+    width: 350px;
+    border: double 2px #4e4e4d; 
+}
