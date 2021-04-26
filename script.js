@@ -1,7 +1,5 @@
 var win = 0, lose = 0, gameOver = false;
 
-
-
 function determineVictor(userChoice, comChoice){
     var result = []
     //From here on 1:Rock, 2:Lizard, 3:Alien, 4:Scissors, 5: Paper
@@ -142,52 +140,44 @@ function rdmDigit(min, max){
 function updateText(lotNum) {
     //var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
     var dict2Index = 0
-    if (win = 1 && lose = 0){
+    if (win == 1 && lose == 0){
         dict2Index = 1;
     }
-    else if (lose = 1 && win = 0){
+    else if (lose == 1 && win == 0){
         dict2Index = 2;
     }
-    else if (win = 1 && lose = 1){
+    else if (win == 1 && lose == 1){
         dict2Index = 3;
     }
     var gameDict1 = {
-        1: "A tie!"
-        2: "Rock crushes lizard!"
-        3: "The paper disproves aliens!"
-        4: "The rock, as it has always done, crushes the scissors!"
-        5: "Paper covers rock!"
-        6: "The snake poisons the alien!"
-        7: "The scissors decapitate the snake!"
-        8: "The snake eats the paper!"
-        9: "The alien vaporizes the rock!"
-        10: "The alien smashes the scissors!"
-        11: "Scissors cut paper!"
-        12: "Game Over!"
+        1: "A tie!",
+        2: "Rock crushes lizard!",
+        3: "The paper disproves aliens!",
+        4: "The rock, as it has always done, crushes the scissors!",
+        5: "Paper covers rock!",
+        6: "The snake poisons the alien!",
+        7: "The scissors decapitate the snake!",
+        8: "The snake eats the paper!",
+        9: "The alien vaporizes the rock!",
+        10: "The alien smashes the scissors!",
+        11: "Scissors cut paper!",
+        12: "Game Over!",
     }
     var gameDict2 = {
-        0: "Choose your weapon!"
-        1: "You have the advantage!"
-        2: "You're at disadvantage!"
-        3: "Sudden death! What a nail biter!"
-        4: "Click Home to reload or MyProfile to go back"
+        0: "Choose your weapon!",
+        1: "You have the advantage!",
+        2: "You're at disadvantage!",
+        3: "Sudden death! What a nail biter!",
+        4: "Click Home to reload or MyProfile to go back",
     }
 
     if (gameOver = true){
-        document.getElementById('actDesc').innerHTML = gameDict1.12;
-        document.getElementById('advCount').innerHTML = gameDict2.4;
-        return
+        lotNum = 12, gameDict2 = 4;
     }
     document.getElementById('actDesc').innerHTML = gameDict1.lotNum;
     document.getElementById('advCount').innerHTML = gameDict2.dict2Index;
 }
 
 function viewScreenChango(frame){
-    var image = document.getElementById("");
-    if (image.getAttribute('src') == "img/ProfilePic.png"){
-        image.src = "img/JBFH.png"
-    }
-    else {
-        image.src = "img/ProfilePic.png"
-    }
+    document.getElementById("videoPane").src = "./img/" + frame + ".png"
 }
