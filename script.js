@@ -123,13 +123,13 @@ function gameOverCheck(w, l){
     if (w == 2 || l == 2){
         gameOver = true;
         if (w > l){
-            viewScreenChango('WinScreen');
+            viewScreenChango("WinScreen");
         }
         else {
-            viewScreenChango('LoseScreen');
+            viewScreenChango("LoseScreen");
         }
         updateText();
-        document.getElementsByClassName('actions').removeAttribute('onclick');
+        document.getElementsByClassName("actions").removeAttribute("onclick");
     }
 }
 
@@ -171,13 +171,15 @@ function updateText(lotNum) {
         4: "Click Home to reload or MyProfile to go back",
     }
 
-    if (gameOver = true){
+    if (gameOver == true){
         lotNum = 12, gameDict2 = 4;
     }
-    document.getElementById('actDesc').innerHTML = gameDict1.lotNum;
-    document.getElementById('advCount').innerHTML = gameDict2.dict2Index;
+    document.getElementById("actDesc").innerHTML = gameDict1.lotNum;
+    document.getElementById("advCount").innerHTML = gameDict2.dict2Index;
 }
 
 function viewScreenChango(frame){
     document.getElementById("videoPane").src = "./img/" + frame + ".png"
 }
+
+gameOn(1);
