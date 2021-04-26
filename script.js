@@ -138,7 +138,7 @@ function rdmDigit(min, max){
 }
 
 function updateText(lotNum) {
-    //var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
+    var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
     var dict2Index = 0
     if (win == 1 && lose == 0){
         dict2Index = 1;
@@ -174,12 +174,10 @@ function updateText(lotNum) {
     if (gameOver == true){
         lotNum = 12, gameDict2 = 4;
     }
-    document.getElementById("actDesc").innerHTML = gameDict1.lotNum;
-    document.getElementById("advCount").innerHTML = gameDict2.dict2Index;
+    ln1.innerHTML = gameDict1.lotNum;
+    ln2.innerHTML = gameDict2.dict2Index;
 }
 
 function viewScreenChango(frame){
     document.getElementById("videoPane").src = "./img/" + frame + ".png"
 }
-
-gameOn(1);
