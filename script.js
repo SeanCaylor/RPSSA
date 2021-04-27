@@ -157,14 +157,17 @@ function rdmDigit(){
 
 //99%(untested code)
 function updateScore(sResult){
-    var score = document.getElementById("sCount");
+    var pScore = document.getElementById("pCount");
+    var cScore = document.getElementById("cCount");
     if (sResult == "win"){
         win++
     }else if (sResult == "lose"){
         lose++
     }
 
-    score.innerHTML = "" + win + "/" + lose;
+    pCount.innerHTML = win;
+    cCount.innerHTML = lose;
+    
     if (win === 3 || lose === 3){
         return 8;
     }else if (win === 2 && lose !== 2){

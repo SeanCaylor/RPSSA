@@ -92,6 +92,14 @@ background-color: #6b1111;
 
 }
 
+.score{
+    font-family: 'Goudy Bookletter 1911', serif;
+    font-weight: bold;
+    font-size: 15rem;
+    margin: 0px 15%;
+    color: #6b1111
+}
+
 .text {
     font-family: 'Goudy Bookletter 1911', serif;
     font-weight: bold;
