@@ -12,7 +12,7 @@ var gameOver = false;
 function determineVictor(userChoice, comChoice){
     console.log("wins and losses are: ", win, lose)
     console.log("the choices were user: ", userChoice, "and com:", comChoice)
-    var result = []
+    var result = [] //index 0 is win/loss, index 1 is art frame/text result
     //From here on 1:Rock, 2:Lizard, 3:Alien, 4:Scissors, 5: Paper
     if (userChoice === comChoice){
         result = ["draw", 1];
@@ -111,8 +111,33 @@ function determineVictor(userChoice, comChoice){
     }
 }
 
+//99%
 function gameOn(choice){
-    
+    gameOverCheck()
+    if (gameOver == false){
+        var result = determineVictor(choice, rdmDigit());//index 0 is win/loss, index 1 is art frame/text result
+        let index = updateScore(result[0]);
+
+        viewScreenChango(result[1]);
+        updateText(result[1], index);
+        gameOverCheck();
+    }else if (gameOver == true){
+        powerOff();
+        if (win > lose){
+            viewScreenChango("WinScreen");
+        }else {
+            viewScreenChango("LoseScreen");
+        }
+        updateText(12, 4);
+    }
+}
+
+//99%(functional but uncomfirmed)
+//Checks for game over condition of 2 victories
+function gameOverCheck(){
+    if (win == 3 || lose == 3){
+        gameOver = true;
+    }
 }
 
 //100%
@@ -130,7 +155,34 @@ function rdmDigit(){
 	return Math.floor(Math.random() * (5 - 1 + 1) + 1);
 }
 
-//75% priority low
+//99%(untested code)
+function updateScore(sResult){
+    var score = document.getElementById("sCount");
+    if (sResult == "win"){
+        win++
+    }else if (sResult == "lose"){
+        lose++
+    }
+
+    score.innerHTML = "" + win + "/" + lose;
+    if (win === 3 || lose === 3){
+        return 8;
+    }else if (win === 2 && lose !== 2){
+        return 5;
+    }else if (win !== 2 && lose === 2){
+        return 6;
+    }else if (win === 2 && lose === 2){
+        return 7;
+    }else if (win > lose){
+        return 1;
+    }else if (win < lose){
+        return 2;
+    }else {
+        return 3;
+    }
+}
+
+//99%(functional but unconfirmed) priority low
 //This updates the game text
 function updateText(lotNum, indx) {
     var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
@@ -151,19 +203,22 @@ function updateText(lotNum, indx) {
         12: "Game Over!",
     }
     var gameDict2 = {
-        0: "Choose your weapon!",
         1: "You have the advantage!",
         2: "You're at disadvantage!",
-        3: "Sudden death! What a nail biter!",
+        3: "What a nail biter!",
         4: "Click Home to reload or MyProfile to go back",
+        5: "You've almost won!",
+        6: "You're hanging on by a thread!",
+        7: "SUDDEN DEATH!!",
+        8: "Thanks for playing!"
     }       
 
     ln1.innerHTML = gameDict1[lotNum];
     ln2.innerHTML = gameDict2[dict2Index];
-    console.log(lotNum)
-    console.log(dict2Index)
-    console.log(gameDict1[lotNum])
-    console.log(gameDict2[lotNum])
+    console.log("lotNum is ", lotNum)
+    console.log("dict2Index is ", dict2Index)
+    console.log("gameDict1 is ", gameDict1[lotNum])
+    console.log("gameDict2 is ", gameDict2[lotNum])
 }
 
 //GOOD
