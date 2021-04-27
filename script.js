@@ -1,3 +1,12 @@
+var uRock = document.getElementById("userRock");
+var uSnake = document.getElementById("userSnake");
+var uAlien = document.getElementById("userAlien");
+var uScissors = document.getElementById("userScissors");
+var uPaper = document.getElementById("userPaper");
+var win = 0;
+var lose = 0;
+var gameOver = false;
+
 //GOOD confirmed multiple times over.
 //Logic engine for the game
 function determineVictor(userChoice, comChoice){
@@ -103,28 +112,11 @@ function determineVictor(userChoice, comChoice){
 }
 
 function gameOn(choice){
-    console.log("but are we getting here?")
-    var comPlay = rdmDigit();
-    var gameRound = determineVictor(choice, comPlay);
-
-    if (gameRound[0] == "win"){
-        win++;
-        viewScreenChango(gameRound[1]);
-        console.log("are we getting here? ln110");
-    }
-    else if (gameRound[0] == "lose"){
-        lose++;
-        viewScreenChango(gameRound[1]);
-        console.log("are we getting here? ln115")
-    }
-    else if (gameRound[0] == "draw") {
-        viewScreenChango(1);
-        console.log("are we getting here? ln119")
-    }
-        updateText(gameRound[1]);
-        console.log("are we getting here? ln122")
+    
 }
 
+//100%
+//neat
 function powerOff(){
     uRock.onclick = "";
     uSnake.onclick = "";
@@ -138,6 +130,8 @@ function rdmDigit(){
 	return Math.floor(Math.random() * (5 - 1 + 1) + 1);
 }
 
+//75% priority low
+//This updates the game text
 function updateText(lotNum, indx) {
     var ln1 = document.getElementById("actDesc"), ln2 = document.getElementById("advCount");
     var dict2Index = indx
@@ -172,6 +166,9 @@ function updateText(lotNum, indx) {
     console.log(gameDict2[lotNum])
 }
 
+//GOOD
+//this changes the view screen, adapted from photoChango
+//I love you, photoChango
 function viewScreenChango(frame){
     var vPane = document.getElementById("viewPic");
     vPane.src = "./img/" + frame + ".png";
@@ -179,14 +176,4 @@ function viewScreenChango(frame){
     console.log(frame)
     console.log("./img/" + frame + ".png")
 }
-
-var uRock = document.getElementById("userRock");
-var uSnake = document.getElementById("userSnake");
-var uAlien = document.getElementById("userAlien");
-var uScissors = document.getElementById("userScissors");
-var uPaper = document.getElementById("userPaper");
-var win = 0;
-var lose = 0;
-var gameOver = false;
-
 
